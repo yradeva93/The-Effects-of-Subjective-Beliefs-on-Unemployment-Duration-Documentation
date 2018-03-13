@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Model Specifications &#8212; The Effects of Subjective Beliefs on Unemployment Duration  documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Code Library" href="library.html" />
+    <link rel="prev" title="Research Paper and Project Review" href="paper.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>The Effects of Subjective Beliefs on Unemployment Duration  documentation</span></a></h1>
+        <h2 class="heading"><span>Model Specifications</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="paper.html">Research Paper and Project Review</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="library.html">Code Library</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="model-specifications">
+<span id="id1"></span><h1>Model Specifications<a class="headerlink" href="#model-specifications" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="specifications-within-the-project">
+<h2>Specifications within the Project<a class="headerlink" href="#specifications-within-the-project" title="Permalink to this headline">¶</a></h2>
+<p>The directory <em>src/model_specs</em> contains 16 <a class="reference external" href="http://www.json.org/">JSON</a> files.
+The names of the files indicate the wave and the dependent variable such as &#8220;w1_num_app.json&#8221;,
+indicating that the dependent variable is number of applications in wave 1.
+Twelve of these files contain a different dependent variable in a different wave. The idea behind
+this particular set up is that in this way, the researcher can control the keep condition and
+the additional dummy variables for each dependent variable in each wave.
+Four of the files contain the 5 control specifications used in the analysis of each wave such
+as &#8220;control_specifications_w1.json&#8221;. There is no general file for the 5 specifications because
+in the particular case of the IZA Survey Dataset the variables across waves differ and hence,
+cannot be more generalized.</p>
+<p>The 5 specifications are as follows:</p>
+<ol class="arabic simple">
+<li>No controls</li>
+<li>Objective controls - individual characteristics (age, gender, highest level of school certificate, whether a person has a professional qualification, verbal and writen German and English abilities, whether a person has a partner and if they are employed, monthly net household income, and number of children under 18 in the household)</li>
+<li>Objective controls plus Locus of Control</li>
+<li>Objective controls, Locus of Control plus Big 5 personality measures</li>
+<li>Objective controls, Locus of Control, Big 5 personality measures plus Cognition</li>
+</ol>
+</div>
+<div class="section" id="general-remarks">
+<h2>General Remarks<a class="headerlink" href="#general-remarks" title="Permalink to this headline">¶</a></h2>
+<p>The choice of JSON is motivated by the attempt to be language-agnostic: JSON is quite expressive and there are parsers for nearly all languages except for Stata. <a class="footnote-reference" href="#id3" id="id2">[1]</a> Thus, there is a converter in  <em>src/model_specs/wscript</em>.</p>
+<p>Because Stata macros are not all that expressive, it can only handle a limited set of JSON files. See the docstring of the <strong>convert_model_json_to_stata</strong>-function in <em>src/model_specs/wscript</em>. You can call it like any other task generator:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ctx</span><span class="p">(</span>
+    <span class="n">rule</span><span class="o">=</span><span class="n">convert_model_json_to_stata</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="s1">&#39;w1_num_app.json&#39;</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="s1">&#39;w1_num_app.do&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The best way to use this is to save a model as <code class="docutils literal"><span class="pre">[model_name].json</span></code>, convert it to <code class="docutils literal"><span class="pre">[model_name].do</span></code>,  and then pass <code class="docutils literal"><span class="pre">[model_name]</span></code> to the code using the <code class="docutils literal"><span class="pre">append</span></code> keyword of the <code class="docutils literal"><span class="pre">run_do_script</span></code> task generator.</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Note that there is <a class="reference external" href="http://ideas.repec.org/c/boc/bocode/s457407.html">insheetjson</a>, but that will read a JSON file into the dataset rather than into macros.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="paper.html">Research Paper and Project Review</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="library.html">Code Library</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013-, Yana Radeva and Friederike Reichel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>

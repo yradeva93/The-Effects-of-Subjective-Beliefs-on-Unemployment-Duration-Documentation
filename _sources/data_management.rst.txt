@@ -1,0 +1,60 @@
+.. _data_management:
+
+***************
+Data Management
+***************
+
+
+The directory *src/data_management* contains several files cleaning the data,
+creating new variables and merging to a final dataset called "final" both in ".dta"
+and ".csv" format. The structure allows for individual handling of each wave of the
+data as they differ in the variables used in the analysis.
+
+Data Cleaning
+==============
+
+.. include:: ../data_management/w1_qs.do
+    :start-after: /*
+    :end-before: */
+
+.. include:: ../data_management/w2_qs.do
+    :start-after: /*
+    :end-before: */
+
+.. include:: ../data_management/w3_qs.do
+    :start-after: /*
+    :end-before: */
+
+.. include:: ../data_management/wi_qs.do
+    :start-after: /*
+    :end-before: */
+
+.. include:: ../data_management/qs.do
+    :start-after: /*
+    :end-before: */
+
+.. include:: ../data_management/id_cohort.do
+    :start-after: /*
+    :end-before: */
+
+
+Creating Unemployment Duration
+==============================
+
+.. automodule:: src.data_management.employed_after_m
+    :members: 
+
+
+Final Dataset
+=============
+
+.. include:: ../data_management/final.do
+    :start-after: /*
+    :end-before: */
+
+
+Data Cleaning for Classification
+==================================
+
+.. automodule:: src.data_management.classification_preprocessing
+    :members: 

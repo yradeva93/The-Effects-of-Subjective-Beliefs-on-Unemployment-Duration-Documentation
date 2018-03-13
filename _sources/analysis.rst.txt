@@ -1,0 +1,46 @@
+.. _analysis:
+
+*******************************************
+Main Model Estimations and Classification
+*******************************************
+
+The directory *src/analysis* contains three Stata files and one Python file.
+All files in this directory are used for the man analysis of the research question.
+The three ".do" files are responsible for the main model estimations - regressing
+unemployment duration and the approximations for job search intensity on subjective
+probability of finding a job across 5 different specifications. These specifications are
+included in the *src/model_spec* directory. In addition the Python file contains machine
+learning code using XGBoost (see :cite:`XGB`), an algorithm to perform "Extreme Gradient Boosting",
+based on :cite:`friedman2001greedy`. It classifies the individuals in different unemployment
+categories according to certain features and then estimates the accuracy and predictive power of each feature.
+
+
+Regression of Unemployment Duration on Subjective Probability of Finding a Job
+==============================================================================
+
+.. include:: ../analysis/unemployment_duration.do
+    :start-after: /*
+    :end-before: */
+
+
+Regression of Number of Applications on Subjective Probability of Finding a Job
+===============================================================================
+
+.. include:: ../analysis/num_applications.do
+    :start-after: /*
+    :end-before: */    
+
+
+Regression of Number of Search Channels on Subjective Probability of Finding a Job
+==================================================================================
+
+.. include:: ../analysis/num_channels.do
+    :start-after: /*
+    :end-before: */     
+    
+    
+Classification Using XGBoost
+==============================
+
+.. automodule:: src.analysis.classification
+    :members:

@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Main Model Estimations and Classification &#8212; The Effects of Subjective Beliefs on Unemployment Duration  documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Visualisation and Results Formatting" href="final.html" />
+    <link rel="prev" title="Data Management" href="data_management.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>The Effects of Subjective Beliefs on Unemployment Duration  documentation</span></a></h1>
+        <h2 class="heading"><span>Main Model Estimations and Classification</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="data_management.html">Data Management</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="final.html">Visualisation and Results Formatting</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="main-model-estimations-and-classification">
+<span id="analysis"></span><h1>Main Model Estimations and Classification<a class="headerlink" href="#main-model-estimations-and-classification" title="Permalink to this headline">¶</a></h1>
+<p>The directory <em>src/analysis</em> contains three Stata files and one Python file.
+All files in this directory are used for the man analysis of the research question.
+The three &#8221;.do&#8221; files are responsible for the main model estimations - regressing
+unemployment duration and the approximations for job search intensity on subjective
+probability of finding a job across 5 different specifications. These specifications are
+included in the <em>src/model_spec</em> directory. In addition the Python file contains machine
+learning code using XGBoost (see <a class="reference internal" href="references.html#xgb" id="id1">[3]</a>), an algorithm to perform &#8220;Extreme Gradient Boosting&#8221;,
+based on <a class="reference internal" href="references.html#friedman2001greedy" id="id2">[2]</a>. It classifies the individuals in different unemployment
+categories according to certain features and then estimates the accuracy and predictive power of each feature.</p>
+<div class="section" id="regression-of-unemployment-duration-on-subjective-probability-of-finding-a-job">
+<h2>Regression of Unemployment Duration on Subjective Probability of Finding a Job<a class="headerlink" href="#regression-of-unemployment-duration-on-subjective-probability-of-finding-a-job" title="Permalink to this headline">¶</a></h2>
+<p>In the file &#8220;unemployment_duration.do&#8221;, the unemployment duration
+constructed in months is regressed on subjective probability of
+finding a job for each wave across 5 specifications.</p>
+<p>The file requires to be called with a model specification as the argument,
+a corresponding do-file must exist in ${PATH_OUT_MODEL_SPECS}. That file needs
+to define globals:</p>
+<blockquote>
+<div><ul class="simple">
+<li>${DEPVAR} - the dependent variable</li>
+<li>${MAIN} - the effect of interest</li>
+<li>${KEEP_CONDITION} - any sampling restrictions (full command)</li>
+<li>${DUMMIES} - additional dummy variables to be used as controls</li>
+</ul>
+</div></blockquote>
+<p>The do-file loops over various specifications with objective and subjective
+controls defined in ${PATH_OUT_MODEL_SPECS}/control_specifications_w[].do
+across waves. Finally, a dataset with estimation results is stored.</p>
+</div>
+<div class="section" id="regression-of-number-of-applications-on-subjective-probability-of-finding-a-job">
+<h2>Regression of Number of Applications on Subjective Probability of Finding a Job<a class="headerlink" href="#regression-of-number-of-applications-on-subjective-probability-of-finding-a-job" title="Permalink to this headline">¶</a></h2>
+<p>In the file &#8220;num_applications.do&#8221;, the number of applications
+submitted is regressed on subjective probability of finding
+a job for each wave across 5 specifications.</p>
+<p>The file requires to be called with a model specification as the argument,
+a corresponding do-file must exist in ${PATH_OUT_MODEL_SPECS}. That file needs
+to define globals:</p>
+<blockquote>
+<div><ul class="simple">
+<li>${DEPVAR} - the dependent variable</li>
+<li>${MAIN} - the effect of interest</li>
+<li>${KEEP_CONDITION} - any sampling restrictions (full command)</li>
+<li>${DUMMIES} - additional dummy variables to be used as controls</li>
+</ul>
+</div></blockquote>
+<p>The do-file loops over various specifications with objective and subjective
+controls defined in ${PATH_OUT_MODEL_SPECS}/control_specifications_w[].do
+across waves. Finally, a dataset with estimation results is stored.</p>
+</div>
+<div class="section" id="regression-of-number-of-search-channels-on-subjective-probability-of-finding-a-job">
+<h2>Regression of Number of Search Channels on Subjective Probability of Finding a Job<a class="headerlink" href="#regression-of-number-of-search-channels-on-subjective-probability-of-finding-a-job" title="Permalink to this headline">¶</a></h2>
+<p>In the file &#8220;num_channels.do&#8221;, the number of search channels
+used is regressed on subjective probability of finding
+a job for each wave across 5 specifications.</p>
+<p>The file requires to be called with a model specification as the argument,
+a corresponding do-file must exist in ${PATH_OUT_MODEL_SPECS}. That file needs
+to define globals:</p>
+<blockquote>
+<div><ul class="simple">
+<li>${DEPVAR} - the dependent variable</li>
+<li>${MAIN} - the effect of interest</li>
+<li>${KEEP_CONDITION} - any sampling restrictions (full command)</li>
+<li>${DUMMIES} - additional dummy variables to be used as controls</li>
+</ul>
+</div></blockquote>
+<p>The do-file loops over various specifications with objective and subjective
+controls defined in ${PATH_OUT_MODEL_SPECS}/control_specifications_w[].do
+across waves. Finally, a dataset with estimation results is stored.</p>
+</div>
+<div class="section" id="module-src.analysis.classification">
+<span id="classification-using-xgboost"></span><h2>Classification Using XGBoost<a class="headerlink" href="#module-src.analysis.classification" title="Permalink to this headline">¶</a></h2>
+<p>The module &#8220;classification.py&#8221; uses the cleaned dataset
+&#8220;classification_cleaned.csv&#8221;, in order to determine the most important
+features for predicting to which quartile of the distribution of unemployment
+duration an individual belongs to. Because of the large number of missings
+XGBoost, an algorithm that can handle missings without using feature
+imputation, is chosen.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="data_management.html">Data Management</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="final.html">Visualisation and Results Formatting</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013-, Yana Radeva and Friederike Reichel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>

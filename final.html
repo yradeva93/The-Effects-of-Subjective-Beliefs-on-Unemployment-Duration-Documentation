@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Visualisation and Results Formatting &#8212; The Effects of Subjective Beliefs on Unemployment Duration  documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Research Paper and Project Review" href="paper.html" />
+    <link rel="prev" title="Main Model Estimations and Classification" href="analysis.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>The Effects of Subjective Beliefs on Unemployment Duration  documentation</span></a></h1>
+        <h2 class="heading"><span>Visualisation and Results Formatting</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="analysis.html">Main Model Estimations and Classification</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="paper.html">Research Paper and Project Review</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="visualisation-and-results-formatting">
+<span id="final"></span><h1>Visualisation and Results Formatting<a class="headerlink" href="#visualisation-and-results-formatting" title="Permalink to this headline">¶</a></h1>
+<p>The directory <em>src/final</em> contains code which uses the already
+created data from the analysis in <em>src/analysis</em> and generates the needed tables and figures.</p>
+<div class="section" id="table-1-unemployment-duration">
+<h2>Table 1 - Unemployment Duration<a class="headerlink" href="#table-1-unemployment-duration" title="Permalink to this headline">¶</a></h2>
+<p>The file &#8220;table_unemployment_duration.do&#8221; creates a table with the estimates
+of subjective probability of finding a job for unemployment duration
+from the corresponding do-file in the analysis folder &#8220;unemployment_duration.do&#8221;
+It writes the results to Latex file
+&#8220;`&#8221;${PATH_OUT_TABLES}/table_unemployment_duration.tex&#8221;&#8217;&#8221;</p>
+</div>
+<div class="section" id="table-2-number-of-applications">
+<h2>Table 2 - Number of Applications<a class="headerlink" href="#table-2-number-of-applications" title="Permalink to this headline">¶</a></h2>
+<p>The file &#8220;table_num_applications.do&#8221; creates a table with the estimates
+of subjective probability of finding a job for number of applications
+from the corresponding do-file in the analysis folder &#8220;num_applications.do&#8221;
+It writes the results to Latex file
+&#8220;`&#8221;${PATH_OUT_TABLES}/table_num_applications.tex&#8221;&#8217;&#8221;</p>
+</div>
+<div class="section" id="table-3-number-of-search-channels">
+<h2>Table 3 - Number of Search Channels<a class="headerlink" href="#table-3-number-of-search-channels" title="Permalink to this headline">¶</a></h2>
+<p>The file &#8220;table_num_channels.do&#8221; creates a table with the estimates
+of subjective probability of finding a job for number of search channels
+from the corresponding do-file in the analysis folder &#8220;num_channels.do&#8221;
+It writes the results to Latex file
+&#8220;`&#8221;${PATH_OUT_TABLES}/table_num_channels.tex&#8221;&#8217;&#8221;</p>
+</div>
+<div class="section" id="module-src.final.classification_figures">
+<span id="classification-figures"></span><h2>Classification Figures<a class="headerlink" href="#module-src.final.classification_figures" title="Permalink to this headline">¶</a></h2>
+<p>The module &#8220;classifciation_figures.py&#8221; creates two figures based on
+&#8220;classification.csv&#8221; and &#8220;classification_cleaned.csv&#8221;. The file
+&#8220;classification.csv&#8221; consists of 2 columns (&#8216;importance&#8217; and &#8216;feature&#8217;).
+In a bar chart (&#8220;feature_importances.png&#8221;) the 20 most important features are
+listed and their predictive power for finding a job is shown. The other figure
+(&#8220;subj_prob_finding_factorplot.png&#8221;) is based on &#8220;classification_cleaned.csv&#8221;.
+It plots the unemployment duration against the subjective probability of
+finding a job.</p>
+</div>
+<div class="section" id="module-src.final.classification_accuracy">
+<span id="classification-accuracy"></span><h2>Classification Accuracy<a class="headerlink" href="#module-src.final.classification_accuracy" title="Permalink to this headline">¶</a></h2>
+<p>This module reads in the &#8220;classification_accuracy.pickle&#8221; file and
+saves the data as a Latex file that can be later included in the paper.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="analysis.html">Main Model Estimations and Classification</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="paper.html">Research Paper and Project Review</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013-, Yana Radeva and Friederike Reichel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>

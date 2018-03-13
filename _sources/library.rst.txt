@@ -1,0 +1,9 @@
+.. _library:
+
+************
+Code Library
+************
+
+The directory *src/library* provides code that is used in different steps of the project. This code is not directly related
+to the model but includes ".ado" files which are used throughout the project from Stata in order to perform the analysis
+and create tables.

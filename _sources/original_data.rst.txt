@@ -1,0 +1,36 @@
+.. _original_data:
+
+*************
+Original Data
+*************
+
+The folder *original_data* includes the IZA Survey Dataset, originally part of the IZA/IAB Dataset.
+
+The data consists of 12 cohorts and includes three main and one additional interim wave.
+Each cohort includes individuals who entered unemployment in a specific month.
+Having the time of getting unemployed as a starting point, the interviews of the
+main waves took place 2, 12, and 36 months after the individuals' initial unemployment spell,
+while the interim wave was after 6 months between wave 1 and wave 2. The questionnaires in the
+three main waves cover two parts: a cross-sectional part ("[]w_qs.dta"), which is related to the time of the
+interview, and a longitudinal part ("[]w_ls.dta"), where individuals give a retrospective view on their
+employment history starting either from the last interview or, in case of wave 1, from the
+entry into unemployment which also defines to which cohort they belong to. There is no longitudinal part for the interim wave.
+The files in the folder are as follows:
+
+"LED_9310_s_iw_qs.dta"
+
+"LED_9310_s_w1_qs.dta"
+
+"LED_9310_s_w1_ls.dta"
+
+"LED_9310_s_w2_qs.dta"
+
+"LED_9310_s_w2_ls.dta"
+
+"LED_9310_s_w3_qs.dta"
+
+"LED_9310_s_w3_ls.dta"
+
+For more information see :cite:`usermanual`.
+
+Please do not manipulate the original data to insure reproducibility.

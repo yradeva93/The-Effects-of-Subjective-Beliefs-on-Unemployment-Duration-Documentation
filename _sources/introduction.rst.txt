@@ -1,0 +1,81 @@
+.. _introduction:
+
+
+************
+Introduction
+************
+
+The Effects of Subjective Beliefs on Unemployment Duration project replicates the main tables and figures from an earlier project
+called: The Effect of (Biased) Beliefs on Unemployment Duration. It seeks to shed light on the effect of subjective beliefs on unemployment duration,
+using the IZA Survey Data :cite:`usermanual`. This is done by using The Stata Template for Reproducible Research Projects in Economics
+:cite:`GaudeckerEconProjectTemplates`, ensuring replicability and allowing for the use of several programming languages
+(e.g. Stata and Python).
+
+
+.. _dag:
+
+Directed Acyclic Graph (DAG)
+============================
+
+To get an idea of the overall structure of the project, please see :download:`the Directed Acyclic Graph </../../bld/src/documentation/dependency_graph.pdf>`.
+
+
+.. _original_data:
+
+Original Data
+==============
+
+The original IZA Survey Data is stored in **src/original_data/**. 
+
+
+.. _data_management:
+
+Data Management
+===============
+
+In **src/data_management/** the original data is cleaned and transformed according to the needs of the later analysis.
+
+
+.. _analysis:
+
+Main Model Estimations
+======================
+
+In order to study the relationship between unemployment duration, job search intensity and subjective beliefs,
+there are three dependent variables of interest, constructed from the given dataset:
+
+* Unemployment duration
+* Number of applications
+* Number of search channels,
+
+where the latter two serve as indicators for the job search intensity. 
+
+For each dependent variable the effect of subjective beliefs is estimated in 5 specifications.
+Those specifications are stored as json files in **src/model_specs/**.
+For each one of the above dependent variables there is a " .do" file in **src/analysis/**,
+which loops over the 5 specifications. The estimation results are stored in ".dta" files.
+
+
+.. _analysis:
+
+Classification
+===============
+
+As an additional approach a classification technique out of the context of
+machine learning is employed. The respective file is also found in **src/analysis/**.
+Whereas the major part of this project is written in Stata, the machine learning part is written in Python.
+
+
+.. _final:
+
+Visualisation and Results Formatting
+==================================== 
+
+The data generated through the analysis step is used for the creation of tables and figures. This is done in **src/final/**.
+
+
+.. _paper:
+
+Research Paper and Project Review
+=================================
+In **src/paper/** the resulting output is included in the research paper. The whole project is then analyzed in a project review.

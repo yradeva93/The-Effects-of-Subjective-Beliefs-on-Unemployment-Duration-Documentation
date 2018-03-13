@@ -1,0 +1,15 @@
+Welcome to The Effects of Subjective Beliefs on Unemployment Duration Project's Documentation!
+================================================
+
+.. toctree::
+    :maxdepth: 2
+
+    introduction
+    original_data
+    data_management
+    analysis
+    final
+    paper
+    model_specs
+    library
+    references

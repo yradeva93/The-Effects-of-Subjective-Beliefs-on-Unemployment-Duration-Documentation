@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Data Management &#8212; The Effects of Subjective Beliefs on Unemployment Duration  documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Main Model Estimations and Classification" href="analysis.html" />
+    <link rel="prev" title="Original Data" href="original_data.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>The Effects of Subjective Beliefs on Unemployment Duration  documentation</span></a></h1>
+        <h2 class="heading"><span>Data Management</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="original_data.html">Original Data</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="analysis.html">Main Model Estimations and Classification</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="data-management">
+<span id="id1"></span><h1>Data Management<a class="headerlink" href="#data-management" title="Permalink to this headline">¶</a></h1>
+<p>The directory <em>src/data_management</em> contains several files cleaning the data,
+creating new variables and merging to a final dataset called &#8220;final&#8221; both in &#8221;.dta&#8221;
+and &#8221;.csv&#8221; format. The structure allows for individual handling of each wave of the
+data as they differ in the variables used in the analysis.</p>
+<div class="section" id="data-cleaning">
+<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
+<p>The file &#8220;w1_qs.do&#8221; cleans the &#8220;LED_9310_s_w1_qs.dta&#8221; questionnaire part
+for wave 1 of the IZA Survey Dataset and creates a &#8220;w1_qs.dta&#8221; file
+which is prepared for merging with the other waves of the
+questionnaire part of the dataset.
+For more information please see the User Manual - Arni et al. (2013).</p>
+<p>The file &#8220;w2_qs.do&#8221; cleans the &#8220;LED_9310_s_w2_qs.dta&#8221; questionnaire part
+for wave 2 of the IZA Survey Dataset and creates a &#8220;w2_qs.dta&#8221; file
+which is prepared for merging with the other waves of the
+questionnaire part of the dataset.
+For more information please see the User Manual - Arni et al. (2013).</p>
+<p>The file &#8220;w3_qs.do&#8221; cleans the &#8220;LED_9310_s_w3_qs.dta&#8221; questionnaire part
+for wave 3 of the IZA Survey Dataset and creates a &#8220;w3_qs.dta&#8221; file
+which is prepared for merging with the other waves of the
+questionnaire part of the dataset.
+For more information please see the User Manual - Arni et al. (2013).</p>
+<p>The file &#8220;wi_qs.do&#8221; cleans the &#8220;LED_9310_s_wi_qs.dta&#8221; questionnaire part
+for the interim wave of the IZA Survey Dataset and creates a &#8220;wi_qs.dta&#8221; file
+which is prepared for merging with the other waves of the
+questionnaire part of the dataset.
+For more information please see the User Manual - Arni et al. (2013).</p>
+<p>The file &#8220;qs.do&#8221; merges the clean data from the different waves of the
+IZA Survey Dataset: &#8220;w1_qs.dta&#8221;, &#8220;w2_qs.dta&#8221;, &#8220;w3_qs.dta&#8221;, &#8220;wi_qs.dta&#8221;.
+For more information please see the User Manual - Arni et al. (2013).</p>
+<p>The file &#8220;id_cohort.do&#8221; creates a dataset &#8220;id_cohort.dta&#8221; with the
+identification number, cohort, month and year of the cohort for each individual.
+It will be used for generating the unemployment durations.</p>
+</div>
+<div class="section" id="module-src.data_management.employed_after_m">
+<span id="creating-unemployment-duration"></span><h2>Creating Unemployment Duration<a class="headerlink" href="#module-src.data_management.employed_after_m" title="Permalink to this headline">¶</a></h2>
+<p>The &#8220;employed_after_m.py&#8221; creates unemployment durations
+for the longitudinal part of the IZA Survey Dataset.
+It subtracts the beginning of unemployment determined by the
+cohort month and year (taken from &#8220;id_cohort.dta&#8221;)
+from the self-reported month and year of
+employment. It creates &#8220;employed_after_m.dta&#8221;</p>
+</div>
+<div class="section" id="final-dataset">
+<h2>Final Dataset<a class="headerlink" href="#final-dataset" title="Permalink to this headline">¶</a></h2>
+<p>The file &#8220;final.do&#8221; merges the clean data from the questionnaire &#8220;qs.dta&#8221;
+and unemployment durations &#8220;employed_after_m.dta&#8221; generated from the
+longitudinal part of the IZA Survey Dataset and creates the final cleaned and
+merged data &#8220;final.dta&#8221; for the purpose of the project.</p>
+</div>
+<div class="section" id="module-src.data_management.classification_preprocessing">
+<span id="data-cleaning-for-classification"></span><h2>Data Cleaning for Classification<a class="headerlink" href="#module-src.data_management.classification_preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>The &#8220;classification_preprocessing.py&#8221; creates a restricted data frame, which
+is needed for the machine learning part in the analysis step. The four
+quartiles of the target variable, the observed unemployment duration, are used
+as categories. All variables which might have explanatory power are kept and
+modified if needed. Specific variables for the purpose of the classification 
+are created.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="original_data.html">Original Data</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="analysis.html">Main Model Estimations and Classification</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013-, Yana Radeva and Friederike Reichel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>

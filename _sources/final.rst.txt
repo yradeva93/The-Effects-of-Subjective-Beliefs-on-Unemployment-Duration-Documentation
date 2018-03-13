@@ -1,0 +1,46 @@
+.. _final:
+
+************************************
+Visualisation and Results Formatting
+************************************
+
+The directory *src/final* contains code which uses the already
+created data from the analysis in *src/analysis* and generates the needed tables and figures.
+
+
+Table 1 - Unemployment Duration
+===============================
+
+.. include:: ../final/table_unemployment_duration.do
+    :start-after: /*
+    :end-before: */
+
+
+Table 2 - Number of Applications
+================================
+
+.. include:: ../final/table_num_applications.do
+    :start-after: /*
+    :end-before: */    
+
+
+Table 3 - Number of Search Channels
+===================================
+
+.. include:: ../final/table_num_channels.do
+    :start-after: /*
+    :end-before: */     
+
+
+Classification Figures
+=======================
+
+.. automodule:: src.final.classification_figures
+    :members:
+
+
+Classification Accuracy
+=======================
+
+.. automodule:: src.final.classification_accuracy
+    :members:

@@ -1,0 +1,13 @@
+.. _paper:
+
+*********************************
+Research Paper and Project Review
+*********************************
+
+
+The directory *src/paper* contains the following files:
+
+    * :file:`research_paper.tex` contains the actual paper, replicating the main tables, figures and findings of the project The Effect of (Biased) Beliefs on Unemployment Duration.
+    * :file:`project_review.tex` contains a detailed explanation of the structure of the project, its strenghts and weaknesses.
+    * :file:`refs.bib` contains the references and bibliography used throughout the project by: `research_paper.tex`, `project_review.tex`, and the Documentation.
+

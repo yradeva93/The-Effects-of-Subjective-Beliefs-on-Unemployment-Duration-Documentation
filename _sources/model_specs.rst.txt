@@ -1,0 +1,48 @@
+.. _model_specifications:
+
+********************
+Model Specifications
+********************
+
+Specifications within the Project
+=========================================
+The directory *src/model_specs* contains 16 `JSON <http://www.json.org/>`_ files.
+The names of the files indicate the wave and the dependent variable such as "w1_num_app.json",
+indicating that the dependent variable is number of applications in wave 1.
+Twelve of these files contain a different dependent variable in a different wave. The idea behind
+this particular set up is that in this way, the researcher can control the keep condition and
+the additional dummy variables for each dependent variable in each wave.
+Four of the files contain the 5 control specifications used in the analysis of each wave such
+as "control_specifications_w1.json". There is no general file for the 5 specifications because
+in the particular case of the IZA Survey Dataset the variables across waves differ and hence,
+cannot be more generalized.
+
+The 5 specifications are as follows:
+
+(1) No controls
+
+(2) Objective controls - individual characteristics (age, gender, highest level of school certificate, whether a person has a professional qualification, verbal and writen German and English abilities, whether a person has a partner and if they are employed, monthly net household income, and number of children under 18 in the household)
+
+(3) Objective controls plus Locus of Control
+
+(4) Objective controls, Locus of Control plus Big 5 personality measures
+
+(5) Objective controls, Locus of Control, Big 5 personality measures plus Cognition
+
+
+General Remarks
+===============
+
+The choice of JSON is motivated by the attempt to be language-agnostic: JSON is quite expressive and there are parsers for nearly all languages except for Stata. [#]_ Thus, there is a converter in  *src/model_specs/wscript*. 
+
+Because Stata macros are not all that expressive, it can only handle a limited set of JSON files. See the docstring of the **convert_model_json_to_stata**-function in *src/model_specs/wscript*. You can call it like any other task generator::
+
+    ctx(
+        rule=convert_model_json_to_stata,
+        source='w1_num_app.json',
+        target='w1_num_app.do',
+    )
+
+The best way to use this is to save a model as ``[model_name].json``, convert it to ``[model_name].do``,  and then pass ``[model_name]`` to the code using the ``append`` keyword of the ``run_do_script`` task generator.
+
+.. [#] Note that there is `insheetjson <http://ideas.repec.org/c/boc/bocode/s457407.html>`_, but that will read a JSON file into the dataset rather than into macros.

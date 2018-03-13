@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &#8212; The Effects of Subjective Beliefs on Unemployment Duration  documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Original Data" href="original_data.html" />
+    <link rel="prev" title="Welcome to The Effects of Subjective Beliefs on Unemployment Duration Project’s Documentation!" href="index.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>The Effects of Subjective Beliefs on Unemployment Duration  documentation</span></a></h1>
+        <h2 class="heading"><span>Introduction</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Welcome to The Effects of Subjective Beliefs on Unemployment Duration Project&#8217;s Documentation!</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="original_data.html">Original Data</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="introduction">
+<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>The Effects of Subjective Beliefs on Unemployment Duration project replicates the main tables and figures from an earlier project
+called: The Effect of (Biased) Beliefs on Unemployment Duration. It seeks to shed light on the effect of subjective beliefs on unemployment duration,
+using the IZA Survey Data <a class="reference internal" href="references.html#usermanual" id="id2">[1]</a>. This is done by using The Stata Template for Reproducible Research Projects in Economics
+<a class="reference internal" href="references.html#gaudeckereconprojecttemplates" id="id3">[4]</a>, ensuring replicability and allowing for the use of several programming languages
+(e.g. Stata and Python).</p>
+<div class="section" id="directed-acyclic-graph-dag">
+<span id="dag"></span><h2>Directed Acyclic Graph (DAG)<a class="headerlink" href="#directed-acyclic-graph-dag" title="Permalink to this headline">¶</a></h2>
+<p>To get an idea of the overall structure of the project, please see <a class="reference download internal" href="_downloads/dependency_graph.pdf" download=""><code class="xref download docutils literal"><span class="pre">the</span> <span class="pre">Directed</span> <span class="pre">Acyclic</span> <span class="pre">Graph</span></code></a>.</p>
+</div>
+<div class="section" id="original-data">
+<span id="id4"></span><h2>Original Data<a class="headerlink" href="#original-data" title="Permalink to this headline">¶</a></h2>
+<p>The original IZA Survey Data is stored in <strong>src/original_data/</strong>.</p>
+</div>
+<div class="section" id="data-management">
+<span id="id5"></span><h2>Data Management<a class="headerlink" href="#data-management" title="Permalink to this headline">¶</a></h2>
+<p>In <strong>src/data_management/</strong> the original data is cleaned and transformed according to the needs of the later analysis.</p>
+</div>
+<div class="section" id="main-model-estimations">
+<span id="analysis"></span><h2>Main Model Estimations<a class="headerlink" href="#main-model-estimations" title="Permalink to this headline">¶</a></h2>
+<p>In order to study the relationship between unemployment duration, job search intensity and subjective beliefs,
+there are three dependent variables of interest, constructed from the given dataset:</p>
+<ul class="simple">
+<li>Unemployment duration</li>
+<li>Number of applications</li>
+<li>Number of search channels,</li>
+</ul>
+<p>where the latter two serve as indicators for the job search intensity.</p>
+<p>For each dependent variable the effect of subjective beliefs is estimated in 5 specifications.
+Those specifications are stored as json files in <strong>src/model_specs/</strong>.
+For each one of the above dependent variables there is a &#8221; .do&#8221; file in <strong>src/analysis/</strong>,
+which loops over the 5 specifications. The estimation results are stored in &#8221;.dta&#8221; files.</p>
+</div>
+<div class="section" id="classification">
+<span id="id6"></span><h2>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h2>
+<p>As an additional approach a classification technique out of the context of
+machine learning is employed. The respective file is also found in <strong>src/analysis/</strong>.
+Whereas the major part of this project is written in Stata, the machine learning part is written in Python.</p>
+</div>
+<div class="section" id="visualisation-and-results-formatting">
+<span id="final"></span><h2>Visualisation and Results Formatting<a class="headerlink" href="#visualisation-and-results-formatting" title="Permalink to this headline">¶</a></h2>
+<p>The data generated through the analysis step is used for the creation of tables and figures. This is done in <strong>src/final/</strong>.</p>
+</div>
+<div class="section" id="research-paper-and-project-review">
+<span id="paper"></span><h2>Research Paper and Project Review<a class="headerlink" href="#research-paper-and-project-review" title="Permalink to this headline">¶</a></h2>
+<p>In <strong>src/paper/</strong> the resulting output is included in the research paper. The whole project is then analyzed in a project review.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Welcome to The Effects of Subjective Beliefs on Unemployment Duration Project&#8217;s Documentation!</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="original_data.html">Original Data</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013-, Yana Radeva and Friederike Reichel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>
