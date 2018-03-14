@@ -52,7 +52,7 @@ where the latter two serve as indicators for the job search intensity.
 
 For each dependent variable the effect of subjective beliefs is estimated in 5 specifications.
 Those specifications are stored as json files in **src/model_specs/**.
-For each one of the above dependent variables there is a " .do" file in **src/analysis/**,
+For each one of the above dependent variables there is a ".do" file in **src/analysis/**,
 which loops over the 5 specifications. The estimation results are stored in ".dta" files.
 
 
